@@ -1,0 +1,65 @@
+<%- include('partials/p1.ejs') %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/index.css" rel="stylesheet" type="text/css">
+
+    <title>Document</title>
+
+    <style>
+        
+        
+
+    </style>
+</head>
+<body>
+    <!-- <div>
+        <nav>
+            <ul>
+                <li id="title">Blog App</li>
+                <li>Blogs</li>
+                <li><a href="/blog/new">New</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="main-cont">
+        <div id="heading-cont">
+            <h1>My BLOG APP</h1>
+        </div> -->
+
+        <div>
+
+
+        
+                <%for(let c of blogs){%>
+                    <div id="blog">
+                    <h1><%= c.title %></h1>
+                    <br> 
+                    <img src="<%= c.image %>" >
+                    <h3>By -<%= c.author %></h2>
+                    <br>
+                    <%= c.content %>
+                    <br>
+                    <br>
+                        <button class="btn btn-success"><a href="/blog/<%=c.id%>">More</a></button>
+
+                    </div>
+                   
+                    
+                <%}%>
+            </div>
+
+
+     
+
+
+
+
+
+
+</body>
+</html>
