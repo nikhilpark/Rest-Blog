@@ -61,6 +61,12 @@ app.delete("/blog/:id", (req, res) => {
   res.redirect("/blog");
 });
 
+app.get("/blog/:id/edit", (req, res) => {
+  const { id } = req.params;
+  const foundBlog = blogs.find((c) => c.id === id);
+  res.render("blog/edit", { comment: foundBlog });
+});
+
 app.listen(3000, () => {
   console.log("server runnig at port 3000");
 });
