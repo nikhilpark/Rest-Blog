@@ -5,9 +5,50 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/edit.css" rel="stylesheet" type="text/css" />
     <title>Document</title>
   </head>
   <body>
-    EDIT
+    <form method="POST" action="/blog/<%=blogs.id%>?_method=PATCH">
+      <div id="form-cont">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            value="<%= blogs.title %>"
+            name="title"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Image URL</label>
+          <input
+            type="text"
+            class="form-control"
+            name="image"
+            value="<%= blogs.image %>"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="author" class="form-label"> Author</label>
+          <input
+            type="text"
+            class="form-control"
+            name="author"
+            value="<%=
+          blogs.author %>"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="blog">Blog Content:</label>
+          <textarea rows="10" name="blog" class="form-control">
+<%= blogs.content %> </textarea
+          >
+        </div>
+        <input type="submit" class="btn btn-primary" />
+      </div>
+    </form>
   </body>
 </html>

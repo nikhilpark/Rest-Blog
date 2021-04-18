@@ -46,6 +46,8 @@ app.get("/blog/:id", (req, res) => {
 
 app.post("/blog/new", (req, res) => {
   const { title, author, content, image } = req.body;
+  console.log(author);
+  console.log(image);
 
   blogs.push({ title, author, content, image, id: uuid() });
   res.redirect("/blog");
@@ -64,7 +66,19 @@ app.delete("/blog/:id", (req, res) => {
 app.get("/blog/:id/edit", (req, res) => {
   const { id } = req.params;
   const foundBlog = blogs.find((c) => c.id === id);
-  res.render("blog/edit", { comment: foundBlog });
+  res.render("blog/edit", { blogs: foundBlog });
+});
+
+app.patch("/blog/:id/", (req, res) => {
+  const { id } = req.params;
+  const foundBlog = blogs.find((c) => c.id === id);
+  console.log(req.body.body);
+  //console.log(req.body.body);
+  const updatedBlogText = req.body;
+  console.log(updatedBlogText);
+  foundBlog.body = updatedBlogText;
+
+  res.redirect("/blog");
 });
 
 app.listen(3000, () => {
