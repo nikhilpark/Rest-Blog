@@ -2,13 +2,9 @@
   margin: 0;
 }
 
-a {
-  text-decoration: none;
-  color: white;
-}
 nav {
-  background-color: rgb(24, 94, 30);
-  height: 8vh;
+  background-color: rgb(40, 41, 40);
+  height: 10vh;
 }
 
 ul {
@@ -23,17 +19,6 @@ li {
 #title {
   font-size: 1.3rem;
 }
-#heading-cont {
-  width: 15%;
-  margin-top: 4vh;
-  background-color: #ccc;
-}
-
-#heading-cont h1 {
-  width: fit-content;
-
-  padding: 20px;
-}
 
 nav ul li a {
   text-decoration: none;
@@ -41,4 +26,12 @@ nav ul li a {
 }
 nav ul li {
   color: white;
+}
+#title:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.2);
 }
