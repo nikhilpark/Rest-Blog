@@ -46,9 +46,6 @@ app.get("/blog/:id", (req, res) => {
 
 app.post("/blog/new", (req, res) => {
   const { title, author, content, image } = req.body;
-  console.log(author);
-  console.log(image);
-
   blogs.push({ title, author, content, image, id: uuid() });
   res.redirect("/blog");
 });
@@ -72,15 +69,16 @@ app.get("/blog/:id/edit", (req, res) => {
 app.patch("/blog/:id/", (req, res) => {
   const { id } = req.params;
   const foundBlog = blogs.find((c) => c.id === id);
-  console.log(req.body.body);
-  //console.log(req.body.body);
-  const updatedBlogText = req.body;
-  console.log(updatedBlogText);
-  foundBlog.body = updatedBlogText;
+  const upDatedBlog = req.body;
+
+  foundBlog.title = upDatedBlog.title;
+  foundBlog.image = upDatedBlog.image;
+  foundBlog.author = upDatedBlog.author;
+  foundBlog.content = upDatedBlog.content;
 
   res.redirect("/blog");
 });
 
 app.listen(3000, () => {
-  console.log("server runnig at port 3000");
+  console.log("server is running at port 3000");
 });
