@@ -45,6 +45,10 @@ let blogs = [
   },
 ];
 
+app.get("/", (req, res) => {
+  res.send("<a href='/blog'>Here </a>");
+});
+
 app.get("/blog", (req, res) => {
   res.render("blog/index", { blogs });
 });
@@ -96,4 +100,5 @@ app.patch("/blog/:id/", (req, res) => {
 
 app.listen(3000, () => {
   console.log("server is running at port 3000");
+  console.log("go to localhost:3000/blog");
 });
