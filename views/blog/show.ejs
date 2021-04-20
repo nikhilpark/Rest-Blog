@@ -13,12 +13,18 @@
 
     <div id="blog">
         <h1><%= data.title %></h1>
-        <br> 
-        <img src="<%= data.image %>" >
-        <h3>By -<%=data.author %></h2>
-            <%=data.content %>
         <br>
-        <br>
+
+        <div id="img-cont">
+            <div>
+            <img src="<%= data.image %>" alt="image"> 
+            </div>           
+        </div>
+
+        <h4 id="author">-<%= data.author %></h2>
+                
+        <p id="content"><%= data.content %></p>
+
         <button type="button" class="btn btn-primary"> <a href="/blog/<%=data.id%>/edit">Edit</a></button>
 
         <form method="POST" action="/blog/<%= data.id %>?_method=DELETE">       
