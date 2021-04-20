@@ -3,10 +3,13 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 mongoose
-  .connect("mongodb://localhost:27017/blog", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://nikhilpark:Nklplp12@@blog.ngngn.mongodb.net/blog?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => console.log("connection succesful"))
   .catch((err) => console.log(err));
 
