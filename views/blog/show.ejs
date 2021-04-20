@@ -12,16 +12,16 @@
     
 
     <div id="blog">
-        <h1><%= blogs.title %></h1>
+        <h1><%= data.title %></h1>
         <br> 
-        <img src="<%= blogs.image %>" >
-        <h3>By -<%=blogs.author %></h2>
-            <%=blogs.content %>
+        <img src="<%= data.image %>" >
+        <h3>By -<%=data.author %></h2>
+            <%=data.content %>
         <br>
         <br>
-        <button type="button" class="btn btn-primary"> <a href="/blog/<%=blogs.id%>/edit">Edit</a></button>
+        <button type="button" class="btn btn-primary"> <a href="/blog/<%=data.id%>/edit">Edit</a></button>
 
-        <form method="POST" action="/blog/<%= blogs.id %>?_method=DELETE">       
+        <form method="POST" action="/blog/<%= data.id %>?_method=DELETE">       
         <button type="submit" class="btn btn-danger">Delete</button>
         </form>
 

@@ -21,25 +21,26 @@
 
 
         
-                <%for(let c of blogs){%>
+                <%for(let c of data){%>
                     <div id="blog">
                     <h1><%= c.title %></h1>
                     
                     <div id="img-cont">
                         <div>
                             <img src="<%= c.image %>" alt="image">
+                        
                         </div>
                     </div>
-                    <h4>-<%= c.author %></h2>
+                    <h4 id="author">-<%= c.author %></h2>
                 
-                    <p><%= c.content %></p>
-
+                    <p id="content"><%= c.content %></p>
+ 
                     
                     
                         <button class="btn btn-dark"><a href="/blog/<%=c.id%>">More</a></button>
 
                     </div>
-                   
+                    \
                     
                 <%}%>
             </div>
