@@ -32,6 +32,10 @@ app.get("/", (req, res) => {
   res.send("<a href='/blog'>Here </a>");
 });
 
+app.get("/hey", (req, res) => {
+  res.send("hey");
+});
+
 app.get("/blog", (req, res) => {
   Blog.find(function (err, docs) {
     if (err) {
