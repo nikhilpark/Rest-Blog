@@ -10,7 +10,7 @@ mongoose
       useUnifiedTopology: true,
     }
   )
-  .then(() => console.log("connection succesful"))
+  .then(() => console.log("conn succesful"))
   .catch((err) => console.log(err));
 
 const app = express();
