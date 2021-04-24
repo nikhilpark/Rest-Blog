@@ -1,0 +1,57 @@
+*{
+    margin:0;
+}
+#main-cont{
+    display:flex;
+    justify-content: center;
+    margin:2vh
+
+}
+#form-cont{
+    background-color: antiquewhite;
+    border: 2px solid black;
+    width:60%;
+   
+ 
+} 
+
+#form{
+    padding:8px;
+    display: flex;
+    justify-content: center;
+
+} 
+
+input{
+    width:30vw !important;
+
+}
+#login-cont{
+    float:right;
+    margin-right:1rem;
+    
+}
+
+
+@media screen and (max-width: 700px) {
+    #form-cont {
+    
+        width: 100%; 
+    }
+    input{
+        width:100% !important;
+    }
+  
+  }
+  @media screen and (max-height: 400px) {
+   
+    input{
+        width:100% !important;
+    }
+  
+  }
+
+
+  
+
+  
