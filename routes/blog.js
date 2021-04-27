@@ -9,10 +9,10 @@ blogRouter.use(express.urlencoded({ extended: true }));
 
 
 blogRouter.route("/")
-.get(async(req, res) => {
+.get(async(req, res) => { 
  
     const data = await Blog.find({});
-    res.render("blog/index",{data})
+    res.render("blog/index",{data,name:req.user.name})
   // Blog.find(function (err, docs) {
   //   if (err) {
   //     console.log(err);
@@ -26,7 +26,7 @@ blogRouter.route("/")
 
 blogRouter.route("/new")
   .get((req, res) => {
-    res.render("blog/new");
+    res.render("blog/new",{name:req.user.name});
   })
 
   .post(async(req,res)=>{
@@ -34,8 +34,8 @@ blogRouter.route("/new")
     try{
     await Blog.create(blog);
     }
-    catch{
-      console.log("error has occured");
+    catch(err){
+      console.log( err);
     }
     res.redirect("/blog")
   });
@@ -67,7 +67,7 @@ blogRouter.route("/:id")
     if (err) {
       console.log(err);
     } else {
-      res.render("blog/show", { data: docs });
+      res.render("blog/show", { data: docs, name:req.user.name });
     }
   });
 })
@@ -107,12 +107,12 @@ blogRouter.route("/:id")
 
 blogRouter.get("/:id/edit", (req, res) => {
   const { id } = req.params;
-  Blog.findById(id, function (err, docs) {
+  Blog.findById(id, function (err, docs) { 
     if (err) {
       console.log("error");
     } else {
       console.log("yo");
-      res.render("blog/edit", { data: docs });
+      res.render("blog/edit", { data: docs, name:req.user.name });
     }
   });
 });

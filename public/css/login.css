@@ -8,12 +8,16 @@
 
 }
 #form-cont{
-    background-color: antiquewhite;
+    background-color: rgb(40, 41, 40);
     border: 2px solid black;
-    width:60%;
-   
- 
+    color:white;
+    width:60%; 
 } 
+
+h1{
+    width: fit-content;
+    margin: 0 auto;
+}
 
 #form{
     padding:8px;
@@ -26,6 +30,9 @@ input{
     width:30vw !important;
 
 }
+#login-cont a{
+    color :#02d842;
+ }
 #login-cont{
     float:right;
     margin-right:1rem;

@@ -28,11 +28,21 @@
   <body>
     <div>
       <nav>
-        <ul>
-          <li id="title">Blog App</li>
-          <li><a href="/blog">Blogs</a></li>
-          <li><a href="/blog/new">New</a></li>
-        </ul>
+        <div>
+          <ul>
+            <li><a href="/blog">Blogs</a></li>
+            <li><a href="/blog/new">New</a></li>
+          </ul>
+       </div>
+       <div id="title-cont">
+            <div id="titlediv">
+              <span id="title"> Welcome <%- name  %> </span>
+            </div> 
+            <div id="logOutBtn">
+              <div><a href="/logout">Log Out</a></div>
+            </div>
+
+       </div>
       </nav>
     </div>
   </body>

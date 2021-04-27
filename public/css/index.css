@@ -49,7 +49,7 @@ button {
   white-space: pre-wrap;
   font-size: 1.45rem;
 }
-
+ 
 @media screen and (max-width: 600px) {
   #blog {
     width: 100%;
