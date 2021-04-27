@@ -5,3 +5,10 @@
 div {
   color: black;
 }
+
+@media screen and (max-height: 500px) {
+
+  #form-cont {
+    margin: 40vh auto;
+  }
+}
