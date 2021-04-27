@@ -31,12 +31,16 @@
         <div>
           <ul>
             <li><a href="/blog">Blogs</a></li>
+            <% if (isAdmin) { %>
             <li><a href="/blog/new">New</a></li>
+            <% } %>
           </ul>
        </div>
        <div id="title-cont">
             <div id="titlediv">
-              <span id="title"> Welcome <%- name  %> </span>
+              <span id="title"> Welcome <%- name  %> 
+              </span>
+              
             </div> 
             <div id="logOutBtn">
               <div><a href="/logout">Log Out</a></div>

@@ -53,7 +53,7 @@ box-shadow: -9px -7px 14px 0px rgba(0,0,0,0.75);
 
   border: 1px solid white;
   padding:10px;
-  
+   
 
 }
 
@@ -79,9 +79,7 @@ nav ul li {
   color: white;
 }
 
-button:hover {
-  transform: scale(1.2);
-}
+
 
 
 @media screen and (max-width: 600px) {

@@ -25,10 +25,35 @@
                 
         <p id="content"><%= data.content %></p>
 
+<% if (isAdmin) { %>
         <button type="button" class="btn btn-primary"> <a href="/blog/<%=data.id%>/edit">Edit</a></button>
-
         <form method="POST" action="/blog/<%= data.id %>?_method=DELETE">       
         <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        <% } %>
+        <form method="POST" action="/blog/<%= data.id %>?_method=PUT">
+        <div class="mb-3" >
+            <label  class="form-label" for="comment">Add a comment</label>
+            <textarea rows="3" class="form-control" name="comment"> </textarea>
+            <br>
+            <button class="btn btn-primary" type = submit > Submit</button>
+            <div id="comment-section">
+                <%for(let i of comment){%>
+                    <div id="comment">
+                        <div id="user-cont">
+                            <%= i.user %> &nbsp; (<%= i.email %>) said - 
+                        </div>
+                        <div id="comment-body">
+                            <%= i.body %>
+                        </div>
+                    </div>
+                    <hr>
+
+
+
+                <%}%>
+            </div>
+            </div>
         </form>
 
     </div>

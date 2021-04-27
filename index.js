@@ -5,6 +5,7 @@ require("dotenv").config();
 const flash = require('connect-flash');
 const session = require('express-session');
 const { ensureAuthenticated } = require('./config/auth');
+// const { ensureAdmin } = require('./config/auth');
 const seedDB = require('./seed');
 const passport = require('passport')
 
@@ -47,7 +48,7 @@ app.use((req, res, next)=>{
   next();
 })
 
-
+ 
 
 
 app.use("/blog",ensureAuthenticated, blogRoutes);

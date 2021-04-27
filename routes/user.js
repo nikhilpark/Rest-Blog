@@ -55,17 +55,17 @@ userRouter.route("/signup")
         });
         // console.log(newUser)
         // res.send("created")
-        bcrypt.genSalt(10, (err,salt)=>
+        bcrypt.genSalt(10, (_err,salt)=>
         bcrypt.hash(newUser.password,salt,null, (err,hash)=>{
           if(err) throw err;
           newUser.password = hash; 
 
           newUser.save()
-            .then(user=>{
+            .then(_user=>{
               req.flash('success_msg','You are now registred and can now login');
               res.redirect('/login')
             })
-            .catch(err=>console.log(err))
+            .catch(__err=>console.log(err))
         }))
       }
     }); 

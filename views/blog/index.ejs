@@ -1,4 +1,4 @@
-<%- include('partials/p1.ejs') %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,19 +10,21 @@
 
     <title>Document</title>
 
-    <style>
-        
-        
 
-    </style>
 </head>
 <body>
+    <%- include('partials/p1.ejs') %>
+   
         <div>
-            
-        
+                <div style="margin-top: 10vh;width:50%;margin: 0 auto;">
+                    <%- include("partials/messages.ejs") %>
+                </div>
                 <%for(let c of data){%>
+                    
                     <div id="blog">
-                    <h1><%= c.title %></h1>
+                        
+
+                    <h1><a href="/blog/<%=c.id%>"><%= c.title %></a></h1>
                     
                     <div id="img-cont">
                         <div>
@@ -35,12 +37,16 @@
                     <p id="content"><%= c.content %></p>
  
                     
-                    
-                        <button class="btn btn-dark"><a href="/blog/<%=c.id%>">More</a></button>
+                    <% if (isAdmin) { %>                    
+                        <button id="more-btn" class="btn btn-dark"><a href="/blog/<%=c.id%>">More</a></button>
+                        <% } %>
 
+
+                    
                     </div>
-                  
+
                 <%}%>
+                
             </div>
 
 
@@ -48,6 +54,7 @@
 
 
 
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
 
 

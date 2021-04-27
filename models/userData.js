@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 
 const userSchema = new mongoose.Schema({
-      name: 
+    name: 
     {
       type: String,
       required:true,
@@ -12,7 +12,6 @@ const userSchema = new mongoose.Schema({
       type:String,
       required:true,
       
-
     },
 
     password: 
@@ -23,6 +22,10 @@ const userSchema = new mongoose.Schema({
     date:{
       type: Date,
       default: Date.now
+    },
+    isAdmin:{
+      type: Boolean,
+      default: false
     }
  
   }); 
