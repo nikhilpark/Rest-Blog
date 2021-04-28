@@ -1,0 +1,45 @@
+#grid1  {
+
+   color:antiquewhite;
+   background-color: black;
+}
+.grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    width:60vw;
+    margin: 4vh auto;
+    justify-items: center;
+ 
+}
+
+#grid2 {
+    background-color: antiquewhite;
+    
+}
+
+#flex{
+    display:flex;
+    width:100vw;
+    flex-direction: row-reverse;
+
+}
+
+#flex div{
+    display: flex;
+
+}
+
+#flex div a{
+    background-color: black;
+    padding:2vw;
+    color:white;
+}
+
+@media screen and (max-width: 650px) {
+    .grid{
+        min-width:100%;
+    }
+  }
+
+
+

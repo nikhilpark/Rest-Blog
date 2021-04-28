@@ -31,31 +31,63 @@
         <button type="submit" class="btn btn-danger">Delete</button>
         </form>
         <% } %>
+
+                <hr style="margin-top:6vh">
+
         <form method="POST" action="/blog/<%= data.id %>?_method=PUT">
-        <div class="mb-3" >
-            <label  class="form-label" for="comment">Add a comment</label>
-            <textarea rows="3" class="form-control" name="comment"> </textarea>
+            <div id="comment-create-cont">
+
+                <div id="avatar-cont">
+                    <div id="avatar"></div>
+                </div>
+            <div class="mb-3" id="input-cont">
+            <textarea rows="2" class="form-control" name="comment" placeholder="Add a Comment"></textarea>
             <br>
+
             <button class="btn btn-primary" type = submit > Submit</button>
-            <div id="comment-section">
-                <%for(let i of comment){%>
-                    <div id="comment">
-                        <div id="user-cont">
-                            <%= i.user %> &nbsp; (<%= i.email %>) said - 
-                        </div>
-                        <div id="comment-body">
-                            <%= i.body %>
-                        </div>
-                    </div>
-                    <hr>
-
-
-
-                <%}%>
             </div>
-            </div>
+        </div>
+        <hr>
         </form>
+            
+        <div id="comment-section">
+              
+            <%for(let i of comment){%>
+                <div id="comm-display-cont">
 
+                        <div>
+                            <div id="avatar"></div>
+                        </div>
+                        <div>
+                            <div id="comment"> 
+                            <div id="user-cont">
+                            <h5><%= i.username %></h5>
+                            <span id="time-cont">&nbsp;.&nbsp;<%= i.date  %> </span>
+                        </div>
+                            <div id="comment-body">
+                            <span><%= i.body %></span>
+                        </div>
+                    
+                  <% if (userID == i.userID) { %>
+                
+                        <div style="display: none;"><button class="btn"><a href="" class="blacklinks">Edit</a> </button> </div>
+                        &nbsp;
+                        .
+                        &nbsp;
+                        <form method="POST" action="/blog/comment/<%= data.id %>?_method=DELETE">
+                            <div style="display:none;"><input type="text" value=<%= i._id %> name="commID"> </div>   
+                            <button type="submit"  class="btn blacklinks">Delete</button>
+                        </form>
+                        <% } %>
+                    </div>
+                    
+                </div>
+            
+            </div>
+            <hr>
+            <%}%>
+        </div>
+    
     </div>
 
 </body>

@@ -1,11 +1,12 @@
 const express = require("express");
 const blogRoutes = require("./routes/blog");
 const userRoutes = require("./routes/user");
+const adminRoutes = require("./routes/admin");
 require("dotenv").config();
 const flash = require('connect-flash');
 const session = require('express-session');
 const { ensureAuthenticated } = require('./config/auth');
-// const { ensureAdmin } = require('./config/auth');
+const { ensureAdmin } = require('./config/admin');
 const seedDB = require('./seed');
 const passport = require('passport')
 
@@ -53,6 +54,7 @@ app.use((req, res, next)=>{
 
 app.use("/blog",ensureAuthenticated, blogRoutes);
 app.use(userRoutes);
+app.use("/admin",ensureAuthenticated,ensureAdmin,adminRoutes)
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "/public")));
 

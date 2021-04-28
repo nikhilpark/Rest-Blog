@@ -6,6 +6,7 @@ const methodOverride = require("method-override");
 const { ensureAdmin} = require('../config/admin');
 
 
+
 blogRouter.use(methodOverride("_method"));
 blogRouter.use(express.urlencoded({ extended: true }));
 
@@ -47,8 +48,32 @@ blogRouter.route("/:id")
     if (err) {
       console.log(err);
     } else {
-      const comments = await Comment.find({})
-      res.render("blog/show",  {comment: comments, data: docs, name:req.user.name,isAdmin:req.user.isAdmin });
+      const comments = await Comment.find({blogID: req.params.id})
+      // const today = new Date();
+      // for (const c in comments){
+      //   console.log(c)
+      // // let storedSecond  = c.date.getSeconds()
+      // // let storedMinutes = c.date.getMinutes()
+      // // let storedHours = c.date.getHours()
+
+      // }
+      // console.log(comments)
+      
+      // console.log(storedSecond)
+      // console.log(storedMinutes)
+      // console.log(storedHours)
+
+      // let nowSecond = today.getSeconds()
+      // let nowMinutes = today.getMinutes()
+      // let nowHours = today.getHours()
+
+      // console.log(nowSecond)
+      // console.log(nowMinutes)
+      // console.log(nowHours)
+      
+
+      
+      res.render("blog/show",  {comment: comments, data: docs,userID:req.user._id, name:req.user.name,isAdmin:req.user.isAdmin });
     }
 
     
@@ -89,23 +114,26 @@ blogRouter.route("/:id")
     );
   })
   .put(async(req,res)=>{
-
-    const body = req.body.comment;
-    const user = req.user.name
+    const blogID = req.params.id
+    const userID = req.user._id
+    const username = req.user.name
     const email = req.user.email
-  
+    const body = req.body.comment;
+
     try{
     await  Comment.create({
-      body: body,
-      user: user,
+      blogID: blogID,
+      userID: userID,
+      username: username,
       email: email,
+      body: body,
 
     });
     }
     catch(err){
       console.log( err);
     }
-    res.redirect("/blog")
+    res.redirect("/blog"+"/"+ req.params.id) 
   });
 
 
@@ -122,6 +150,21 @@ blogRouter.get("/:id/edit", (req, res) => {
     }
   });
 });
+
+blogRouter.delete("/comment/:id/",(req,res)=>{
+  console.log("worked")
+  const commID = req.body.commID;
+  console.log(commID)
+  Comment.findByIdAndDelete(commID , function (err) {
+    if (err) {
+      console.log(err);
+    } else {
+
+      res.redirect("/blog/"+ req.params.id);
+    }
+  });  
+})
+
 
 
 module.exports = blogRouter;
