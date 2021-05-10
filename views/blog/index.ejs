@@ -37,7 +37,7 @@
                     <p id="content"><%= c.content %></p>
  
                     
-                    <% if (isAdmin) { %>                    
+                    <% if (user) { %>                    
                         <button id="more-btn" class="btn btn-dark"><a href="/blog/<%=c.id%>">More</a></button>
                         <% } %>
 

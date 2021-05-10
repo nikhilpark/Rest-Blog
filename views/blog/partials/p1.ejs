@@ -25,28 +25,45 @@
 
     <title>Blog</title>
   </head>
-  <body>
+  <body> 
     <div>
       <nav>
         <div>
           <ul>
-            <li><a href="/blog">Blogs</a></li>
-            <% if (isAdmin) { %>
+            <li><h4><a href="/blog">Blogs</a></li></h3>
+            <% if (user) { %>
+              <% if (user.isAdmin) { %>
+               
+              
             <li><a href="/blog/new">New</a></li>
             <li><a style="color:rgb(255, 148, 148)" href="/admin">Admin</a></li>
+              <% } %>
             <% } %>
           </ul>
        </div>
+       <% if (user) { %>
        <div id="title-cont">
+        
             <div id="titlediv">
-              <span id="title"> Welcome <%- name  %> 
-              </span>
-              
+              <span id="title"> Welcome <%= user.name  %>  </span>
+             
             </div> 
             <div id="logOutBtn">
               <div><a href="/logout">Log Out</a></div>
             </div>
-
+        <%} else{%>
+          <div id="title-cont">
+            <div id="titlediv">
+              <span><a style="text-decoration: none; color:white;" href="/login"> Log In </a></span>
+             
+            </div> 
+            <div id="logOutBtn">
+              <div><a href="/signup">Sign Up</a></div>
+            </div>
+        <%}%>
+       
+        
+                     
        </div>
       </nav>
     </div>

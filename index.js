@@ -46,13 +46,14 @@ app.use((req, res, next)=>{
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
+  res.locals.user = req.user; 
   next();
 })
 
  
 
 
-app.use("/blog",ensureAuthenticated, blogRoutes);
+app.use("/blog", blogRoutes);
 app.use(userRoutes);
 app.use("/admin",ensureAuthenticated,ensureAdmin,adminRoutes)
 app.set("view engine", "ejs");
@@ -68,7 +69,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 
 app.get("/", (req, res) => {
-  res.redirect("/login")
+  res.redirect("/blog")
 }); 
 
 

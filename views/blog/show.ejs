@@ -25,14 +25,20 @@
                 
         <p id="content"><%= data.content %></p>
 
-<% if (isAdmin) { %>
+<% if (user) { %>
+ 
+
+<% if (user.isAdmin) { %> 
         <button type="button" class="btn btn-primary"> <a href="/blog/<%=data.id%>/edit">Edit</a></button>
         <form method="POST" action="/blog/<%= data.id %>?_method=DELETE">       
         <button type="submit" class="btn btn-danger">Delete</button>
         </form>
         <% } %>
+<% } %>
 
                 <hr style="margin-top:6vh">
+<% if (user) { %>
+ 
 
         <form method="POST" action="/blog/<%= data.id %>?_method=PUT">
             <div id="comment-create-cont">
@@ -49,6 +55,27 @@
         </div>
         <hr>
         </form>
+        <% } else{%>
+            
+
+            <form method="POST" action="/blog/<%= data.id %>?_method=PUT">
+                <div id="comment-create-cont">
+    
+                    <div id="avatar-cont">
+                        <div id="avatar"></div>
+                    </div>
+                <div class="mb-3" id="input-cont">
+                <textarea rows="2" class="form-control disbld" disabled name="comment" placeholder="You must be Logged in to Add a Comment"></textarea>
+                <br>
+    
+                <button class="btn btn-primary disabled" type = submit > Submit</button>
+                </div>
+            </div>
+            <hr>
+            </form>
+
+
+            <%}%>
             
         <div id="comment-section">
               
@@ -67,8 +94,9 @@
                             <div id="comment-body">
                             <span><%= i.body %></span>
                         </div>
-                    
-                  <% if (userID == i.userID) { %>
+                <% if ( user) { %> 
+             
+                  <% if (user._id.toString() === i.userID) { %>
                 
                         <div style="display: none;"><button class="btn"><a href="" class="blacklinks">Edit</a> </button> </div>
                         &nbsp;
@@ -78,6 +106,7 @@
                             <div style="display:none;"><input type="text" value=<%= i._id %> name="commID"> </div>   
                             <button type="submit"  class="btn blacklinks">Delete</button>
                         </form>
+                        <% } %>
                         <% } %>
                     </div>
                     

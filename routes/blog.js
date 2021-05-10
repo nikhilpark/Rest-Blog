@@ -4,6 +4,7 @@ const Blog = require('../models/blogData')
 const Comment = require('../models/commentData')
 const methodOverride = require("method-override"); 
 const { ensureAdmin} = require('../config/admin');
+const { ensureAuthenticated } = require("../config/auth");
 
 
 
@@ -15,15 +16,15 @@ blogRouter.route("/")
 .get(async(req, res) => { 
  
     const data = await Blog.find({});
-    res.render("blog/index",{data,name:req.user.name,isAdmin:req.user.isAdmin})
+    res.render("blog/index",{data})
   
 }); 
 
-blogRouter.use("/new",ensureAdmin)
+blogRouter.use("/new",ensureAuthenticated,ensureAdmin)
 
 blogRouter.route("/new")
   .get((req, res) => {
-    res.render("blog/new",{name:req.user.name,isAdmin:req.user.isAdmin});
+    res.render("blog/new",{});
   })
 
   .post(async(req,res)=>{
@@ -73,7 +74,7 @@ blogRouter.route("/:id")
       
 
       
-      res.render("blog/show",  {comment: comments, data: docs,userID:req.user._id, name:req.user.name,isAdmin:req.user.isAdmin });
+      res.render("blog/show",  {comment: comments, data: docs,});
     }
 
     
@@ -137,7 +138,7 @@ blogRouter.route("/:id")
   });
 
 
-blogRouter.use("/:id/edit",ensureAdmin)
+blogRouter.use("/:id/edit",ensureAuthenticated, ensureAdmin)
 
 blogRouter.get("/:id/edit", (req, res) => {
   const { id } = req.params;
@@ -146,7 +147,7 @@ blogRouter.get("/:id/edit", (req, res) => {
       console.log("error");
     } else {
       console.log("yo");
-      res.render("blog/edit", { data: docs, name:req.user.name,isAdmin:req.user.isAdmin });
+      res.render("blog/edit", { data: docs });
     }
   });
 });
